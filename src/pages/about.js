@@ -1,29 +1,20 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
-const Header = (props) => {
-  return (
-	  <>
-      <div>
-        Go to <Link to="/about">About page</Link>
-      </div>
-      <h2>{props.title}</h2>
-	  </>
-  )
-}
-
 const Body = (props) => {
   return (
   <div>
-    <p>{props.body}</p>
-    {props.posts.map(({ node }) => (
+    <div>
+      Back to <Link to="/">Home page</Link>
+    </div>
+    {props.posts.map(({ node }) => {
+      return (
       <div key={node.frontmatter.title}>
-        <p><em>{node.frontmatter.date}</em></p>
         <h3>{node.frontmatter.title}</h3>
         <p>{node.excerpt}</p>
-		    <hr/>
       </div>
-    ))}
+      )
+    })}
   </div>
   )
 }
@@ -32,16 +23,10 @@ export default () => {
   const data = useStaticQuery(
     graphql`
       query {
-        site {
-          siteMetadata {
-            title
-            body
-          }
-        }
         allMarkdownRemark(
             filter: {
               frontmatter: {
-                title: { ne: "About"}
+                title: { eq: "About"}
               }
             }
           ) {
@@ -49,7 +34,6 @@ export default () => {
               node {
                 frontmatter {
                   title
-                  date(formatString: "dddd DD MMMM YYYY")
                 }
                 excerpt
               }
@@ -61,8 +45,7 @@ export default () => {
   console.log('data', data)
   return (
     <>
-      <Header title={data.site.siteMetadata.title} />
-      <Body body={data.site.siteMetadata.body} posts={data.allMarkdownRemark.edges} />
+      <Body posts={data.allMarkdownRemark.edges} />
     </>
   )
 }
