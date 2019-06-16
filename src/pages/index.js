@@ -9,7 +9,15 @@ const Header = (props) => {
 
 const Body = (props) => {
   return (
+  <div>
     <p>{props.body}</p>
+    {props.posts.map(({ node }) => (
+      <div key={node.id}>
+        <h3>{node.frontmatter.title} {node.frontmatter.date}</h3>
+        <p>{node.excerpt}</p>
+      </div>
+    ))}
+  </div>
   )
 }
 
@@ -23,6 +31,18 @@ export default () => {
             body
           }
         }
+        allMarkdownRemark {
+          edges {
+            node {
+              html
+              frontmatter {
+                title
+                date
+              }
+              excerpt
+            }
+          }
+        }
       }
     `
   )
@@ -30,7 +50,7 @@ export default () => {
   return (
     <>
       <Header title={data.site.siteMetadata.title} />
-      <Body body={data.site.siteMetadata.body} />
+      <Body body={data.site.siteMetadata.body} posts={data.allMarkdownRemark.edges} />
     </>
   )
 }
