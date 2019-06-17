@@ -12,6 +12,19 @@ module.exports = {
     },
   plugins: [
     {
+      resolve: `gatsby-source-apiserver`,
+      options: {
+        typePrefix: 'jsonplaceholderapi__',
+        url: `https://jsonplaceholder.typicode.com/posts`,
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        name: `posts`,
+        verboseOutput: true,
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
