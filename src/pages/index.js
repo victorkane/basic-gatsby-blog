@@ -17,10 +17,10 @@ const Body = (props) => {
   <div>
     <p>{props.body}</p>
     {props.posts.map(({ node }) => (
-      <div key={node.frontmatter.title}>
-        <p><em>{node.frontmatter.date}</em></p>
-        <h3>{node.frontmatter.title}</h3>
-        <p>{node.excerpt}</p>
+      <div key={node.id}>
+{/*        <p><em>{node.date}</em></p> */}
+        <h3>{node.title}</h3>
+        <p>{node.body}</p>
 		    <hr/>
       </div>
     ))}
@@ -38,23 +38,15 @@ export default () => {
             body
           }
         }
-        allMarkdownRemark(
-            filter: {
-              frontmatter: {
-                title: { ne: "About"}
-              }
-            }
-          ) {
-            edges {
-              node {
-                frontmatter {
-                  title
-                  date(formatString: "dddd DD MMMM YYYY")
-                }
-                excerpt
-              }
+        allJsonplaceholderapiPosts (limit: 8) {
+          edges {
+            node {
+              id
+              title
+              body
             }
           }
+        }
       }
     `
   )
@@ -62,7 +54,9 @@ export default () => {
   return (
     <>
       <Header title={data.site.siteMetadata.title} />
-      <Body body={data.site.siteMetadata.body} posts={data.allMarkdownRemark.edges} />
+      <Body body={data.site.siteMetadata.body} 
+            posts={data.allJsonplaceholderapiPosts.edges}
+      />
     </>
   )
 }
