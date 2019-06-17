@@ -6,7 +6,10 @@ export default ({data}) => {
   //console.log(data)
   //const post = data.markdownRemark allJsonplaceholderapiPosts
   return (
-    <div>Hello blog post</div>
+    <>
+      <h2>{data.allJsonplaceholderapiPosts.edges[0].node.title}</h2>
+      <p>{data.allJsonplaceholderapiPosts.edges[0].node.body}</p>
+    </>
   )
 }
 
@@ -22,6 +25,7 @@ export const query = graphql`
       edges {
         node {
           title
+          body
         }
       }
     } 
