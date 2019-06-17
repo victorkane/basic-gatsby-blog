@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-export default (props) => {
-  console.log(props)
+export default ({data}) => {
+  console.log('data', data)
   //console.log(data)
   //const post = data.markdownRemark allJsonplaceholderapiPosts
   return (
@@ -10,13 +10,20 @@ export default (props) => {
   )
 }
 
-/*
 export const query = graphql`
   query($slug: String!) {
-    allJsonplaceholderapiPosts(fields: { slug: { eq: $slug } }){
-      title
-      body
-    }
+    allJsonplaceholderapiPosts(
+      filter: {
+        fields: { 
+          slug: { eq: $slug }
+        }
+      }
+    ) {
+      edges {
+        node {
+          title
+        }
+      }
+    } 
   }
 `
-*/
