@@ -3,12 +3,12 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 
 const Header = (props) => {
   return (
-	  <>
+    <>
       <div>
         Go to <Link to="/about">About page</Link>
       </div>
       <h2>{props.title}</h2>
-	  </>
+    </>
   )
 }
 
@@ -21,7 +21,14 @@ const Body = (props) => {
 {/*        <p><em>{node.date}</em></p> */}
         <h3>{node.title}</h3>
         <p>{node.body}</p>
-		    <hr/>
+        <div>
+          <Link 
+            to={node.fields.slug}
+					>
+					  Read more...
+          </Link>
+        </div>
+        <hr/>
       </div>
     ))}
   </div>
@@ -44,6 +51,9 @@ export default () => {
               id
               title
               body
+              fields {
+                slug
+              }
             }
           }
         }
