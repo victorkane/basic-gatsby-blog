@@ -1,12 +1,10 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
+import Layout from "../components/layout"
 
 const Body = (props) => {
   return (
   <div>
-    <div>
-      Back to <Link to="/">Home page</Link>
-    </div>
     {props.posts.map(({ node }) => {
       return (
       <div key={node.frontmatter.title}>
@@ -44,8 +42,8 @@ export default () => {
   )
   console.log('data', data)
   return (
-    <>
+    <Layout>
       <Body posts={data.allMarkdownRemark.edges} />
-    </>
+    </Layout>
   )
 }

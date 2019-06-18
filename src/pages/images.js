@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import Layout from "../components/layout"
 
 export default () => {
   const [index, setIndex] = useState(0)
@@ -28,7 +29,7 @@ export default () => {
   const handlePrevious = () => index === 0 ? setIndex(length) : setIndex(index - 1)
   const { node } = allFile.edges[index]
   return (
-    <div>
+    <Layout>
       <h2>World Tour!</h2>
       <div>
         <Img
@@ -41,8 +42,7 @@ export default () => {
         <button onClick={() => handlePrevious()}>&#x21A9;</button>
         <button onClick={() => handleNext()}>&#x21AA;</button>
       </div>
-    </div>
-
+    </Layout>
   )
 }
 

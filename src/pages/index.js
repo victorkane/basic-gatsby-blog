@@ -1,16 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-
-const Header = (props) => {
-  return (
-    <>
-      <div>
-        Go to <Link to="/about">About page</Link>&nbsp;<Link to="/images">Images page</Link>
-      </div>
-      <h2>{props.title}</h2>
-    </>
-  )
-}
+import Layout from "../components/layout"
 
 const Body = (props) => {
   return (
@@ -62,11 +52,10 @@ export default () => {
   )
   // console.log('data', data)
   return (
-    <>
-      <Header title={data.site.siteMetadata.title} />
+    <Layout>
       <Body body={data.site.siteMetadata.body} 
             posts={data.allJsonplaceholderapiPosts.edges}
       />
-    </>
+    </Layout>
   )
 }
