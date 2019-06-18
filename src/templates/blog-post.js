@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { Helmet } from "react-helmet"
 
 export default ({data}) => {
   console.log('data', data)
@@ -7,6 +8,7 @@ export default ({data}) => {
   //const post = data.markdownRemark allJsonplaceholderapiPosts
   return (
     <>
+			<Helmet title={data.allJsonplaceholderapiPosts.edges[0].node.title} />
       <h2>{data.allJsonplaceholderapiPosts.edges[0].node.title}</h2>
       <p>{data.allJsonplaceholderapiPosts.edges[0].node.body}</p>
     </>

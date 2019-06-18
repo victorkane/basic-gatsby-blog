@@ -21,13 +21,13 @@ const Body = (props) => {
 {/*        <p><em>{node.date}</em></p> */}
         <h3>{node.title}</h3>
         <p>{node.body}</p>
-        <div>
+        {node.fields && <div>
           <Link 
             to={node.fields.slug}
 					>
 					  Read more...
           </Link>
-        </div>
+        </div>}
         <hr/>
       </div>
     ))}
