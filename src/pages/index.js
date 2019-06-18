@@ -5,7 +5,7 @@ const Header = (props) => {
   return (
     <>
       <div>
-        Go to <Link to="/about">About page</Link>
+        Go to <Link to="/about">About page</Link>&nbsp;<Link to="/images">Images page</Link>
       </div>
       <h2>{props.title}</h2>
     </>
@@ -60,7 +60,7 @@ export default () => {
       }
     `
   )
-  console.log('data', data)
+  // console.log('data', data)
   return (
     <>
       <Header title={data.site.siteMetadata.title} />
