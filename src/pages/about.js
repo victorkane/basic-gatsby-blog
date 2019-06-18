@@ -1,6 +1,7 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 const Body = (props) => {
   return (
@@ -43,6 +44,7 @@ export default () => {
   console.log('data', data)
   return (
     <Layout>
+		  <SEO title="About" />
       <Body posts={data.allMarkdownRemark.edges} />
     </Layout>
   )

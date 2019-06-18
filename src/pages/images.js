@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 export default () => {
   const [index, setIndex] = useState(0)
@@ -30,6 +31,7 @@ export default () => {
   const { node } = allFile.edges[index]
   return (
     <Layout>
+		  <SEO title="Images" />
       <h2>World Tour!</h2>
       <div>
         <Img

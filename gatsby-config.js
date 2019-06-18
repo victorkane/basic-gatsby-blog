@@ -8,7 +8,9 @@ module.exports = {
   /* Your site config here */
     siteMetadata: {
       title: `Recent Posts`,
-      body: `What's been on our mind...`
+      body: `What's been on our mind...`,
+			description: `basic gatsby blog`,
+			author: `Victor Kane`,
     },
   plugins: [
     'gatsby-plugin-top-layout',
