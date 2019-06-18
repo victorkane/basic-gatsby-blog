@@ -11,6 +11,12 @@ module.exports = {
       body: `What's been on our mind...`
     },
   plugins: [
+    'gatsby-plugin-top-layout',
+    {
+      resolve: 'gatsby-plugin-material-ui',
+      options: {
+      }
+    },
     {
       resolve: `gatsby-source-apiserver`,
       options: {
@@ -41,6 +47,6 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`
+    `gatsby-plugin-sharp`,
   ],
 }
